@@ -4,11 +4,11 @@ import ArticleCard from './ArticleCard.jsx'
 
 function ArticlesList() { 
     const [articles, setArticles] = useState([])
+    const [avotes, setAVotes]=useState(0)
     
     useEffect(() => {
         getAllNews().then((result) => {
             setArticles(result)
-            console.log(result)
           });
     }, []);
 
@@ -16,7 +16,7 @@ function ArticlesList() {
     return (<div>
         < h2 > Articles List</h2 >
         {articles.map((article) => {
-            return <ArticleCard article={article} key={ article.article_id} />
+            return <ArticleCard article={article} avotes={avotes} setAVotes={setAVotes} key={ article.article_id}  />
         }) }
 
         </div>)
