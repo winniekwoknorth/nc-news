@@ -17,13 +17,12 @@ function ArticlesList() {
     }, []);
 
     
-      useEffect(() => {
+      
         if (!isLoading) {
             getAllNews().then((result) => {
                 setArticles(result)
           });
         }
-      }, []);
     
     if(isLoading){
       return <>Loading...</>
