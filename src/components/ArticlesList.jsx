@@ -16,17 +16,10 @@ function ArticlesList() {
         })
     }, []);
 
-    
-      
-        if (!isLoading) {
-            getAllNews().then((result) => {
-                setArticles(result)
-          });
-        }
-    
+
     if(isLoading){
-      return <>Loading...</>
-    }
+        return <>Loading...</>
+          }
 
     return (<div>
         < h2 > Articles List</h2 >
