@@ -6,3 +6,9 @@ export const getAllNews = () => {
         .then((res) => {return res.data.articles })
     
 }
+
+export const getDetailNews = (articles_id) => {
+    return axios
+    .get(`https://northcoderprojectwk.onrender.com/api/articles/${articles_id}`)
+    .then((res) => {return res.data.article })
+}
