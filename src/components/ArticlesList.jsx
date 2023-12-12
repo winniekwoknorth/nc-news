@@ -1,17 +1,33 @@
 import { useState, useEffect } from "react";
-import { getAllNews } from "./utils.js";
+import { getAllNews } from "../utils.js";
 import ArticleCard from './ArticleCard.jsx'
 
 function ArticlesList() { 
     const [articles, setArticles] = useState([])
-    const [avotes, setAVotes]=useState(0)
+    const [avotes, setAVotes] = useState(0)
+    const [isLoading, setIsLoading] = useState(true)
     
     useEffect(() => {
         getAllNews().then((result) => {
             setArticles(result)
-          });
+        })
+            .then(() => {
+            setIsLoading(false)
+        })
     }, []);
 
+    
+      useEffect(() => {
+        if (!isLoading) {
+            getAllNews().then((result) => {
+                setArticles(result)
+          });
+        }
+      }, []);
+    
+    if(isLoading){
+      return <>Loading...</>
+    }
 
     return (<div>
         < h2 > Articles List</h2 >

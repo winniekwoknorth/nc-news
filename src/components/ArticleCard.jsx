@@ -1,7 +1,12 @@
 
 import { Link } from "react-router-dom"
-
-function ArticleCard({ article, avotes}) {
+import {useEffect } from "react"
+function ArticleCard({ article, avotes, setAVotes }) {
+    const actualVote = article.votes
+    
+    useEffect(() => {
+        setAVotes(actualVote)
+    }, [actualVote])
 
 
     return (
