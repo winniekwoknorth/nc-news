@@ -4,34 +4,19 @@ import ArticleCard from './ArticleCard.jsx'
 
 function ArticlesList() { 
     const [articles, setArticles] = useState([])
-    const [avotes, setAVotes] = useState(0)
-    const [isLoading, setIsLoading] = useState(true)
     
     useEffect(() => {
         getAllNews().then((result) => {
             setArticles(result)
-        })
-            .then(() => {
-            setIsLoading(false)
-        })
+            console.log(result)
+          });
     }, []);
 
-    
-      
-        if (!isLoading) {
-            getAllNews().then((result) => {
-                setArticles(result)
-          });
-        }
-    
-    if(isLoading){
-      return <>Loading...</>
-    }
 
     return (<div>
         < h2 > Articles List</h2 >
         {articles.map((article) => {
-            return <ArticleCard article={article} avotes={avotes} setAVotes={setAVotes} key={ article.article_id}  />
+            return <ArticleCard article={article} key={ article.article_id} />
         }) }
 
         </div>)
