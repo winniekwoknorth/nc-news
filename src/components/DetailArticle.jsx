@@ -1,36 +1,52 @@
 import { getDetailNews } from "../utils.js";
 import { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom';
-
-
-
-
-
+import { useParams } from "react-router-dom";
 
 function DetailArticle() {
-    const [detailArticle, setDetailArticle] = useState('') 
-    const { article_id } = useParams()
-    
-    useEffect(() => {
-        if (article_id) {
-            getDetailNews(article_id).then((result) => {
-                setDetailArticle(result)
-                
-            
-            })
-        }
-    }, []);
+  const [detailArticle, setDetailArticle] = useState("");
+  const { article_id } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    if (article_id) {
+      getDetailNews(article_id)
+        .then((result) => {
+          setDetailArticle(result);
+        })
+        .then(() => {
+          setIsLoading(false);
+        });
+    }
+  }, []);
+  if (isLoading) {
+    return <>Loading...</>;
+  }
 
-    return (<div className='DetailArticle'> 
-        {detailArticle.id}
-        <h1>topic:{detailArticle.title}</h1>
-        <img src={detailArticle.article_img_url} alt={detailArticle.title} className='responsive' />
-        <h3>topic:{detailArticle.topic}</h3>
-        <h3>author:{detailArticle.author}</h3>
-        <h3>body:{detailArticle.body}</h3>
-        <h3>created_at:{detailArticle.created_at}</h3>
-        <h3>votes:{detailArticle.votes}</h3>
-    </div>)
+  var d = new Date(detailArticle.created_at);
+
+  var datestring =
+    d.getDate() +
+    "-" +
+    (d.getMonth() + 1) +
+    "-" +
+    d.getFullYear() +
+    " " +
+    d.getHours() +
+    ":" +
+    d.getMinutes();
+    
+  return (
+    <div className="DetailArticle">
+      <img
+        src={detailArticle.article_img_url}
+        alt={detailArticle.title}
+        className="responsive"
+      />
+      <section>{detailArticle.body}</section>
+      <p className='sub' >created by {detailArticle.author}</p> 
+      <p className='sub' >created at {datestring}</p>
+      <p className='sub' >votes:{detailArticle.votes}</p>
+    </div>
+  );
 }
 
-export default DetailArticle
+export default DetailArticle;
