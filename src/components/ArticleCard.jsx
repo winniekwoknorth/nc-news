@@ -21,7 +21,7 @@ function ArticleCard({ article, avotes, setAVotes}) {
             <p></p>
             <Link to={`/detailarticle/${article.article_id}`} >Detail Article</Link>
             <p></p>
-            <Link to="commentslist">See Comments</Link>
+            <Link to={`/commentslist/${article.article_id}`}>See Comments</Link>
             
             
         </div>

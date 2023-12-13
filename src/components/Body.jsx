@@ -3,7 +3,8 @@ import ArticlesList from "./ArticlesList"
 import SingIn from './SignIn'
 import DetailArticle from "./DetailArticle.jsx"
 import CommentsList from "./CommentsList.jsx"
-import {useState} from "react";
+import { useState } from "react";
+
 
 function Body() {
     return (
@@ -13,6 +14,7 @@ function Body() {
                 <Route path="/signin" element={<SingIn />} />
                 <Route path="/commentslist" element={<CommentsList />} />
                 <Route path="/detailarticle/:article_id" element={<DetailArticle />} /> 
+                <Route path="/commentslist/:article_id" element={<CommentsList />} /> 
             </Routes>
             </div>
 )
