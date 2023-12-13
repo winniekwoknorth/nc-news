@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
 import { getAllComments } from "../utils.js";
 import CommentCard from './CommentCard.jsx'
-import { useParams } from "react-router-dom";
 
-function CommentsList() {
+
+function CommentsList({ article_id}) {
     const [comments, setComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-    const { article_id } = useParams();
-    const [err, setErr]= useState(null)
-
+    const [err, setErr] = useState(null)
+    const [countComments, setCountComments] = useState(0)
+    
 useEffect(() => {
     getAllComments(article_id).then((result) => {
         setComments(result)
@@ -29,10 +29,11 @@ if (isLoading){
     return(
         <div>
             <h2>Comments List</h2>
+            <p>{ comments.length} comments</p>
             {comments.map((comment) => {
                 return <CommentCard key={comment.comment_id} comment={comment} />
             })}
-</div>
+        </div>
     )    
     
 }

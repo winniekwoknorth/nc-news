@@ -1,10 +1,10 @@
 import { getDetailNews } from "../utils.js";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+//import { useParams } from "react-router-dom";
 
-function DetailArticle() {
+function DetailArticle({ article_id}) {
   const [detailArticle, setDetailArticle] = useState("");
-  const { article_id } = useParams();
+  //const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     if (article_id) {
@@ -13,6 +13,10 @@ function DetailArticle() {
           setDetailArticle(result);
           setIsLoading(false)
         })
+        .catch((err) => {
+          setIsLoading(false)
+          setErr(err)
+  })
     }
   }, []);
   if (isLoading) {
@@ -34,11 +38,6 @@ function DetailArticle() {
     
   return (
     <div className="DetailArticle">
-      <img
-        src={detailArticle.article_img_url}
-        alt={detailArticle.title}
-        className="responsive"
-      />
       <p className='articleBody responsive' >{detailArticle.body}</p>
       <p className='sub' >created by {detailArticle.author}</p> 
       <p className='sub' >created at {datestring}</p>
