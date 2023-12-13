@@ -13,7 +13,12 @@ function ArticlesList() {
         })
             .then(() => {
             setIsLoading(false)
+            })
+            .catch((err) => {
+                setIsLoading(false)
+                setErr(err)
         })
+        
     }, []);
 
 
