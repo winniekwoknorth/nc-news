@@ -11,10 +11,8 @@ function DetailArticle() {
       getDetailNews(article_id)
         .then((result) => {
           setDetailArticle(result);
+          setIsLoading(false)
         })
-        .then(() => {
-          setIsLoading(false);
-        });
     }
   }, []);
   if (isLoading) {
@@ -41,7 +39,7 @@ function DetailArticle() {
         alt={detailArticle.title}
         className="responsive"
       />
-      <h3>{detailArticle.body}</h3>
+      <p className='articleBody responsive' >{detailArticle.body}</p>
       <p className='sub' >created by {detailArticle.author}</p> 
       <p className='sub' >created at {datestring}</p>
       <p className='sub' >votes:{detailArticle.votes}</p>
