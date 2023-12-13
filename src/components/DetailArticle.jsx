@@ -41,7 +41,7 @@ function DetailArticle() {
         alt={detailArticle.title}
         className="responsive"
       />
-      <section>{detailArticle.body}</section>
+      <h3>{detailArticle.body}</h3>
       <p className='sub' >created by {detailArticle.author}</p> 
       <p className='sub' >created at {datestring}</p>
       <p className='sub' >votes:{detailArticle.votes}</p>
