@@ -1,8 +1,6 @@
 
 import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { Route, Routes } from "react-router-dom"
-import DetailArticle from "./DetailArticle.jsx"
 
 function ArticleCard({ article, avotes, setAVotes}) {
     const actualVote= article.votes

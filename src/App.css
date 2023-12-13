@@ -23,3 +23,16 @@
 .sub{
   color:grey;
 }
+
+.CommentCard{
+  border: solid;
+  color: grey;
+  align-items: center;
+}
+.commentBody{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5rem;
+  color:black;
+}
