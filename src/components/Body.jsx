@@ -7,14 +7,15 @@ import { useState } from "react";
 
 
 function Body() {
+    const [currUser, setCurrUser] = useState(null)
     return (
         <div>
             <Routes>
                 <Route path="/" element={<ArticlesList />} />
-                <Route path="/signin" element={<SingIn />} />
-                <Route path="/commentslist" element={<CommentsList />} />
+                <Route path="/signin" element={<SingIn currUser={ currUser} setCurrUser={setCurrUser} />} />
                 <Route path="/detailarticle/:article_id" element={<DetailArticle />} /> 
                 <Route path="/commentslist/:article_id" element={<CommentsList />} /> 
+                <Route path="/*" element={ <p className='error'> An error1</p>} />
             </Routes>
             </div>
 )

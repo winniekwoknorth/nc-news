@@ -40,3 +40,7 @@
 .vote {
   display: inline-block; 
 }
+
+.SignInCard {
+  border: solid;
+}

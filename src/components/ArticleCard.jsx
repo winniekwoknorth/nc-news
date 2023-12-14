@@ -32,13 +32,11 @@ function ArticleCard({ article}) {
         patchDeleteVote(article_id)
             .then((result) => setAVotes(result.votes))
             .catch((err) => {
-                setErr(err)
+                setErr(err.message)
         })
     }
     
-    if (err) {
-        return <>{err.message}</>
-    }
+   
 
     return (
         <div className='ArticleCard'>
@@ -56,8 +54,8 @@ function ArticleCard({ article}) {
             <p></p>
             <button id={article.article_id} onClick={clickComments}>
                 {showComments ? "Hide Comments" : "Show Comments"}</button>
-            <>{showComments === true ? <CommentsList article_id={ article_id} /> : <></> }</>
-            
+            <>{showComments === true ? <CommentsList article_id={article_id} /> : <></>}</>
+            {err ? <p>{err}</p> : null}
         </div>
     )
 }

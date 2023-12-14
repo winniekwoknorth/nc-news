@@ -7,9 +7,11 @@ function DetailArticle({ article_id}) {
   const [err, setErr]= useState(null)
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
+    console.log(article_id)
     if (article_id) {
       getDetailNews(article_id)
         .then((result) => {
+          console.log(result)
           setDetailArticle(result);
           setIsLoading(false)
         })

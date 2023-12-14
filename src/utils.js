@@ -16,7 +16,10 @@ export const getDetailNews = (articles_id) => {
 export const getAllComments = (article_id) => {
     return axios
         .get(`https://northcoderprojectwk.onrender.com/api/articles/${article_id}/comments`)
-        .then((res) => {return res.data.comments })
+        .then((res) =>{
+        console.log(res.data)
+         return res.data.comments })
+    
 }
 
 export const patchAddVote = (articles_id) => {
@@ -43,4 +46,10 @@ export const patchDeleteVote = (articles_id) => {
             return res.data.articles
         })
     
+}
+
+export const getAllUsers = () => {
+    return axios
+        .get(`https://northcoderprojectwk.onrender.com/api/users`)
+        .then((res) => {return res.data.users })
 }
