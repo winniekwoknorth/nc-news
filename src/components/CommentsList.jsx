@@ -7,7 +7,6 @@ function CommentsList({ article_id}) {
     const [comments, setComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [err, setErr] = useState(null)
-    const [countComments, setCountComments] = useState(0)
     
 useEffect(() => {
     getAllComments(article_id).then((result) => {
@@ -26,10 +25,21 @@ if (isLoading){
     if (err) { 
         return <>{ err.message}</>
     }
-    return(
+
+    return (
         <div>
             <h2>Comments List</h2>
-            <p>{ comments.length} comments</p>
+            <form >
+                <label htmlFor="comment">comment:</label>
+                <input className="comment"
+                type ="text"
+                placeholder="comment here"/>
+                <input type="submit" />
+    
+                
+            </form>   
+            
+            <p>{comments.length} comments</p>
             {comments.map((comment) => {
                 return <CommentCard key={comment.comment_id} comment={comment} />
             })}
