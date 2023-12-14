@@ -1,13 +1,18 @@
 import { useState, useEffect } from "react";
-import { getAllComments } from "../utils.js";
+import { getAllComments, postComment } from "../utils.js";
 import CommentCard from './CommentCard.jsx'
 
 
-function CommentsList({ article_id}) {
+function CommentsList({ article_id,}) {
     const [comments, setComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [err, setErr] = useState(null)
-    
+    const [addcomment, setAddComment] = ({})
+
+const handleSubmit = (event) => {
+    event.preventDefault()
+    postComment(article_id)
+}
 useEffect(() => {
     getAllComments(article_id).then((result) => {
         setComments(result)
@@ -34,9 +39,8 @@ if (isLoading){
                 <input className="comment"
                 type ="text"
                 placeholder="comment here"/>
-                <input type="submit" />
+                <input type="submit" onClick={handleSubmit} />
     
-                
             </form>   
             
             <p>{comments.length} comments</p>

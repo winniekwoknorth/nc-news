@@ -17,7 +17,6 @@ export const getAllComments = (article_id) => {
     return axios
         .get(`https://northcoderprojectwk.onrender.com/api/articles/${article_id}/comments`)
         .then((res) =>{
-        console.log(res.data)
          return res.data.comments })
     
 }
@@ -52,4 +51,18 @@ export const getAllUsers = () => {
     return axios
         .get(`https://northcoderprojectwk.onrender.com/api/users`)
         .then((res) => {return res.data.users })
+}
+
+export const postComment = (articles_id) => {
+    const newComments = {
+        username: 'tickle122',
+        body: 'great'
+      }
+    
+    return axios
+    .post(`https://northcoderprojectwk.onrender.com/api/articles/${articles_id}/comments`, newComments )
+        .then((res) => {
+            return res.data.articles
+        })
+    
 }
