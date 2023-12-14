@@ -7,7 +7,6 @@ function CommentsList({ article_id}) {
     const [comments, setComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [err, setErr] = useState(null)
-    const [countComments, setCountComments] = useState(0)
     
 useEffect(() => {
     getAllComments(article_id).then((result) => {
