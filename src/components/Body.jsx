@@ -15,7 +15,7 @@ function Body() {
                 <Route path="/signin" element={<SingIn currUser={ currUser} setCurrUser={setCurrUser} />} />
                 <Route path="/detailarticle/:article_id" element={<DetailArticle />} /> 
                 <Route path="/commentslist/:article_id" element={<CommentsList />} /> 
-                <Route path="/*" element={ <p className='error'> An error1</p>} />
+              {  <Route path="/*" element={ <p className='error'> erro path</p>} />}
             </Routes>
             </div>
 )
