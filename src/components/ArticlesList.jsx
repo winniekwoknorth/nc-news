@@ -28,7 +28,7 @@ function ArticlesList() {
     return (<div>
         < h2 > Articles List</h2 >
         {articles.map((article) => {
-            return <ArticleCard article={article} key={article.article_id} err={err} setErr={setErr} />
+            return <ArticleCard article={article} key={article.article_id}/>
         }) }
 
         </div>)

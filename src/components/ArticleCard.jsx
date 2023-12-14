@@ -4,10 +4,11 @@ import CommentsList from "./CommentsList"
 import DetailArticle from "./DetailArticle"
 import { patchAddVote,patchDeleteVote} from '../utils.js'
 
-function ArticleCard({ article,setErr }) {
+function ArticleCard({ article}) {
     const [avotes, setAVotes] = useState(article.votes)
     const [showComments, setShowComments] = useState(false)
     const [showDetailArt, setShowDetailArt] = useState(false)
+    const [err, setErr]=useState(null)
 
     const article_id = article.article_id
 
@@ -33,6 +34,10 @@ function ArticleCard({ article,setErr }) {
             .catch((err) => {
                 setErr(err)
         })
+    }
+    
+    if (err) {
+        return <>{err.message}</>
     }
 
     return (

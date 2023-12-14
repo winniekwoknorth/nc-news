@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 function DetailArticle({ article_id}) {
   const [detailArticle, setDetailArticle] = useState("");
-  //const { article_id } = useParams();
+  const [err, setErr]= useState(null)
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     if (article_id) {
@@ -21,6 +21,10 @@ function DetailArticle({ article_id}) {
   }, []);
   if (isLoading) {
     return <>Loading...</>;
+  }
+  
+  if (err) {
+    return <>{err.message}</>
   }
 
   var d = new Date(detailArticle.created_at);
