@@ -7,7 +7,7 @@ function CommentsList({ article_id,}) {
     const [comments, setComments] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [err, setErr] = useState(null)
-    const [addcomment, setAddComment] = ({})
+    const [addcomment, setAddComment] = ([])
 
 const handleSubmit = (event) => {
     event.preventDefault()

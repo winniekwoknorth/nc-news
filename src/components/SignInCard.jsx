@@ -12,7 +12,7 @@ function SignInCard({ user, currUser, setCurrUser }) {
             <img className='responsive' src={user.avatar_url} alt={ user.username} />
             
             <button id={user.username}  onClick={handleSignIn}  >Sign in</button>
-            <p>{currUser === user.username ? <>you have logged in as { currUser}</> : <></> }</p>
+            <p>{currUser === user.username ? <>you have logged in as { currUser}</> : <>you have signed out</> }</p>
         </div>
     )
 }

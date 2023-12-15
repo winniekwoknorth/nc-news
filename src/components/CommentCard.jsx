@@ -1,11 +1,14 @@
 
 import { Link } from "react-router-dom"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
+import { CurrUserContext } from './Body.jsx'
 
 
-function ArticleCard({ comment, setComment}) {
+
+function ArticleCard({ comment, setComment }) {
+    const { currUser, setCurrUser } = useContext(CurrUserContext)
+
     var d = new Date(comment.created_at);
-
   var datestring =
     d.getDate() +
     "-" +
